@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambous Music - Guitar-led. Modern. Premium.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --night-black: #070706;
+            --champagne: #D6BEBA;
+            --antique-gold: #B99B5F;
+            --warm-ivory: #F5F0E7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--night-black);
+            background-color: var(--warm-ivory);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--warm-ivory);
+            border-bottom: 1px solid #e0d5ca;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--night-black);
+        }
+
+        .logo-pick {
+            width: 24px;
+            height: 24px;
+            background-color: var(--antique-gold);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 85%, 18% 100%, 0% 38%);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--night-black);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--antique-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--night-black) 0%, #1a1a19 100%);
+            color: var(--warm-ivory);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-pick {
+            width: 80px;
+            height: 80px;
+            background-color: var(--champagne);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 85%, 18% 100%, 0% 38%);
+            margin: 0 auto 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--champagne);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-tagline {
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--antique-gold);
+            color: var(--night-black);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--champagne);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--warm-ivory);
+            border: 2px solid var(--champagne);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--champagne);
+            color: var(--night-black);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--antique-gold);
+            margin: 1rem auto 0;
+        }
+
+        /* Music Section */
+        #music {
+            background-color: #fafaf8;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .track-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .track-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        audio {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        /* Bio Section */
+        #bio {
+            background-color: white;
+        }
+
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .bio-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* News Section */
+        #news {
+            background-color: #fafaf8;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .news-date {
+            padding: 1.5rem 2rem 0;
+            font-size: 0.85rem;
+            color: var(--antique-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .news-title {
+            padding: 0.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .news-excerpt {
+            padding: 0 2rem 2rem;
+            color: #666;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .news-read-more {
+            padding: 0 2rem 1.5rem;
+            color: var(--antique-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, var(--night-black) 0%, #1a1a19 100%);
+            color: var(--warm-ivory);
+        }
+
+        #contact h2 {
+            color: var(--warm-ivory);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: rgba(255,255,255,0.05);
+            color: var(--warm-ivory);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--champagne);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .contact-submit {
+            background-color: var(--antique-gold);
+            color: var(--night-black);
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-submit:hover {
+            background-color: var(--champagne);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--champagne);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--antique-gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--night-black);
+            color: var(--warm-ivory);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--night-black);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background-color: var(--warm-ivory);
+                border-bottom: 1px solid #e0d5ca;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid #e0d5ca;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-pick {
+                width: 60px;
+                height: 60px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .music-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-pick"></div>
+                Ambous Music
+            </a>
+            <ul class="nav-links">
+                <li><a href="#music">Music</a></li>
+                <li><a href="#bio">Bio</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-pick"></div>
+            <h1>Ambous Music</h1>
+            <p class="hero-subtitle">Guitar-led. Modern. Premium.</p>
+            <p class="hero-tagline">Exploring contemporary guitar music</p>
+            <div class="cta-buttons">
+                <a href="#music" class="btn btn-primary">Listen</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="container">
+        <h2>Latest Tracks</h2>
+        <div class="music-grid">
+            <div class="track-card">
+                <h3 class="track-title">Coming Soon</h3>
+                <p class="track-meta">Your first track details</p>
+                <p style="color: #999; font-size: 0.9rem;">Music player will be added here. You can embed tracks from Spotify, SoundCloud, or use direct audio files.</p>
+            </div>
+            <div class="track-card">
+                <h3 class="track-title">Coming Soon</h3>
+                <p class="track-meta">Your second track details</p>
+                <p style="color: #999; font-size: 0.9rem;">Add more tracks as you release new music.</p>
+            </div>
+            <div class="track-card">
+                <h3 class="track-title">Coming Soon</h3>
+                <p class="track-meta">Your third track details</p>
+                <p style="color: #999; font-size: 0.9rem;">Each track can include a player and description.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="container">
+        <h2>About</h2>
+        <div class="bio-content">
+            <p>
+                Welcome to Ambous Music. I'm a guitarist dedicated to creating contemporary, guitar-driven music that pushes boundaries while remaining accessible to listeners who appreciate craftsmanship and authenticity.
+            </p>
+            <p>
+                With a focus on modern production and premium sound quality, each piece is carefully composed and performed to deliver an immersive listening experience.
+            </p>
+            <p>
+                I'm passionate about building a community of fellow guitar enthusiasts and music lovers. Whether you're discovering new sounds or supporting independent music, I'm excited to have you here.
+            </p>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="container">
+        <h2>News & Updates</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-date">August 15, 2026</div>
+                <h3 class="news-title">Website Launch</h3>
+                <p class="news-excerpt">Welcome to the official Ambous Music website. This is your hub for listening, learning about my work, and staying connected.</p>
+                <a href="#" class="news-read-more">Read More →</a>
+            </article>
+            <article class="news-card">
+                <div class="news-date">Coming Soon</div>
+                <h3 class="news-title">New Track Release</h3>
+                <p class="news-excerpt">Stay tuned for upcoming releases and announcements about new music and collaborations.</p>
+                <a href="#" class="news-read-more">Read More →</a>
+            </article>
+            <article class="news-card">
+                <div class="news-date">Coming Soon</div>
+                <h3 class="news-title">Live Performances</h3>
+                <p class="news-excerpt">Information about upcoming shows, performances, and events will be posted here.</p>
+                <a href="#" class="news-read-more">Read More →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="contact-submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p>For booking inquiries and collaborations:</p>
+                <p style="margin-top: 1rem;"><strong>contact@ambousmusic.com</strong></p>
+                <div class="social-links">
+                    <a href="https://instagram.com/ambousmusic" target="_blank">Instagram</a>
+                    <a href="https://twitter.com/ambousmusic" target="_blank">Twitter</a>
+                    <a href="https://youtube.com/@ambousmusic" target="_blank">YouTube</a>
+                    <a href="https://spotify.com/artist/ambousmusic" target="_blank">Spotify</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ambous Music. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Create mailto link
+            const mailtoLink = `mailto:contact@ambousmusic.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+            window.location.href = mailtoLink;
+        });
+    </script>
+</body>
+</html>
