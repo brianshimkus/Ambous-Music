@@ -93,6 +93,29 @@
             color: var(--antique-gold);
         }
 
+        .social-nav {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .social-nav a {
+            color: var(--night-black);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .social-nav a:hover {
+            color: var(--antique-gold);
+            transform: scale(1.15);
+        }
+
         /* Hero Section */
         .hero {
             background-color: var(--warm-ivory);
@@ -594,6 +617,10 @@
                 border-bottom: 1px solid #e0d5ca;
             }
 
+            .social-nav {
+                display: none;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -640,6 +667,12 @@
                 <li><a href="#bio">About</a></li>
                 <li><a href="#news">News</a></li>
                 <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="social-nav">
+                <li><a href="https://instagram.com/ambousmusic" target="_blank" title="Instagram" aria-label="Instagram">📷</a></li>
+                <li><a href="https://youtube.com/@ambousmusic" target="_blank" title="YouTube" aria-label="YouTube">▶️</a></li>
+                <li><a href="https://tiktok.com/@ambousmusic" target="_blank" title="TikTok" aria-label="TikTok">🎵</a></li>
+                <li><a href="https://facebook.com/ambousmusic" target="_blank" title="Facebook" aria-label="Facebook">f</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
