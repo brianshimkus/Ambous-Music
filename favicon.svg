@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">Ambous Music warm-ivory favicon</title>
-  <desc id="desc">Antique-gold guitar pick centered on a warm-ivory background.</desc>
-  <rect width="512" height="512" fill="#F5F0E7"/>
-  <path fill="#B99B5F" d="M50 7C74 7 90 17 90 36C90 57 71 89 56 109C52 115 48 115 44 109C29 89 10 57 10 36C10 17 26 7 50 7Z" transform="translate(121 100) scale(2.7)"/>
+  <desc id="desc">Antique-gold guitar pick centered on a warm-ivory background with rounded corners.</desc>
+  <rect x="16" y="16" width="480" height="480" rx="104" fill="#F5F0E7"/>
+  <path fill="#B99B5F" d="M50 7C74 7 90 17 90 36C90 57 71 89 56 109C52 115 48 115 44 109C29 89 10 57 10 36C10 17 26 7 50 7Z" transform="translate(106 73) scale(3)"/>
 </svg>
