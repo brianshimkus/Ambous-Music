@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="600" viewBox="0 0 1800 600">
+  <title>Ambous Music pick wordmark for light backgrounds</title>
+  <g transform="translate(150 195) scale(1.75)" fill="#B99B5F">
+    <path d="M50 7C74 7 90 17 90 36C90 57 71 89 56 109C52 115 48 115 44 109C29 89 10 57 10 36C10 17 26 7 50 7Z"/>
+  </g>
+  <text x="400" y="318" fill="#0B0B0A" font-family="Montserrat, Avenir Next, Helvetica Neue, sans-serif" font-size="205" font-weight="700" letter-spacing="-4">Ambous</text>
+  <text x="412" y="423" fill="#B99B5F" font-family="Montserrat, Avenir Next, Helvetica Neue, sans-serif" font-size="48" font-weight="600" letter-spacing="23">MUSIC</text>
+</svg>

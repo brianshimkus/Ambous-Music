@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <title>Ambous Music stacked pick logo for light backgrounds</title>
+  <g transform="translate(450 100) scale(3)" fill="#B99B5F">
+    <path d="M50 7C74 7 90 17 90 36C90 57 71 89 56 109C52 115 48 115 44 109C29 89 10 57 10 36C10 17 26 7 50 7Z"/>
+  </g>
+  <text x="600" y="705" text-anchor="middle" fill="#0B0B0A" font-family="Montserrat, Avenir Next, Helvetica Neue, sans-serif" font-size="184" font-weight="750" letter-spacing="-5">Ambous</text>
+  <line x1="390" x2="810" y1="785" y2="785" stroke="#B99B5F" stroke-width="2" opacity=".5"/>
+  <text x="600" y="905" text-anchor="middle" fill="#B99B5F" font-family="Montserrat, Avenir Next, Helvetica Neue, sans-serif" font-size="58" font-weight="600" letter-spacing="26">MUSIC</text>
+</svg>
