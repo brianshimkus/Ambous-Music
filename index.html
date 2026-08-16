@@ -483,18 +483,33 @@
 
         .contact-info {
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
+            padding: 3rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            border: 1.5px solid rgba(214, 190, 186, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .contact-info p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
         }
 
         .contact-email {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 1.5rem 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-email a {
+            color: var(--antique-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            color: var(--champagne);
         }
 
         .social-links {
@@ -716,28 +731,9 @@
     <section id="contact" class="container">
         <h2>Get in Touch</h2>
         <div class="contact-content">
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="contact-submit">Send Message</button>
-            </form>
             <div class="contact-info">
                 <p>For booking inquiries and collaborations:</p>
-                <div class="contact-email">contact@ambousmusic.com</div>
+                <div class="contact-email"><a href="mailto:Brian@AmbousMusic.com">Brian@AmbousMusic.com</a></div>
                 <div class="social-links">
                     <a href="https://instagram.com/ambousmusic" target="_blank">Instagram</a>
                     <a href="https://twitter.com/ambousmusic" target="_blank">Twitter</a>
@@ -769,18 +765,6 @@
             });
         });
 
-        // Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Create mailto link
-            const mailtoLink = `mailto:contact@ambousmusic.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-            window.location.href = mailtoLink;
-        });
     </script>
 </body>
 </html>
