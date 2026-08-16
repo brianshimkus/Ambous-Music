@@ -30,6 +30,7 @@
             background-color: var(--warm-ivory);
             line-height: 1.7;
             font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         /* Header & Navigation */
@@ -200,23 +201,28 @@
         }
 
         section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            font-weight: 800;
             margin-bottom: 3.5rem;
             text-align: center;
             position: relative;
-            padding-bottom: 1.25rem;
-            letter-spacing: -0.5px;
+            padding-bottom: 1.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--night-black), #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         section h2::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: linear-gradient(90deg, var(--antique-gold), var(--champagne));
-            margin: 1.25rem auto 0;
+            margin: 1.5rem auto 0;
             border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(185, 155, 95, 0.3);
         }
 
         .section-label {
@@ -242,31 +248,47 @@
         }
 
         .track-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2.25rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            background: linear-gradient(135deg, #ffffff 0%, #fafaf8 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(185, 155, 95, 0.1);
+            border: 1.5px solid rgba(185, 155, 95, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--antique-gold), var(--champagne));
         }
 
         .track-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(185, 155, 95, 0.15);
-            border-color: rgba(185, 155, 95, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(185, 155, 95, 0.2);
+            border-color: rgba(185, 155, 95, 0.4);
         }
 
         .track-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+            color: var(--night-black);
         }
 
         .track-meta {
             font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 1.5rem;
+            color: var(--antique-gold);
+            margin-bottom: 1.75rem;
             letter-spacing: 1px;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         audio {
@@ -280,14 +302,24 @@
         }
 
         .bio-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            line-height: 1.8;
-            font-size: 1.05rem;
+            line-height: 1.9;
+            font-size: 1.08rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(250,250,248,1));
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1.5px solid rgba(185, 155, 95, 0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .bio-content p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .bio-content p:last-child {
+            margin-bottom: 0;
         }
 
         /* News Section */
@@ -303,42 +335,57 @@
         }
 
         .news-card {
-            background-color: white;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #fafaf8 100%);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(185, 155, 95, 0.1);
+            border: 1.5px solid rgba(185, 155, 95, 0.15);
+            position: relative;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--antique-gold), var(--champagne));
+            z-index: 1;
         }
 
         .news-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(185, 155, 95, 0.15);
-            border-color: rgba(185, 155, 95, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(185, 155, 95, 0.2);
+            border-color: rgba(185, 155, 95, 0.4);
         }
 
         .news-date {
-            padding: 1.5rem 2rem 0;
+            padding: 2rem 2rem 0.75rem;
             font-size: 0.8rem;
             color: var(--antique-gold);
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .news-title {
-            padding: 0.5rem 2rem;
-            font-size: 1.2rem;
-            font-weight: 700;
+            padding: 0.75rem 2rem;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--night-black);
         }
 
         .news-excerpt {
-            padding: 0 2rem 2rem;
-            color: #666;
+            padding: 0.5rem 2rem 2rem;
+            color: #555;
             font-size: 0.95rem;
             flex-grow: 1;
+            line-height: 1.8;
         }
 
         .news-read-more {
