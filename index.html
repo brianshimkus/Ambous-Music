@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambous Music</title>
-    <link rel="icon" type="image/svg+xml" href="favicon-new.svg">
-    <link rel="icon" type="image/x-icon" href="favicon-new.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="ambous-favicon-192.png">
     <style>
         * {
@@ -110,11 +110,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1.5px solid rgba(214, 190, 186, 0.3);
+            border: 1.5px solid var(--champagne);
             border-radius: 12px;
             text-decoration: none;
             color: var(--champagne);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             animation: socialPulse 0.6s ease-out var(--delay, 0s);
@@ -131,22 +131,9 @@
             }
         }
 
-        .social-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(214, 190, 186, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .social-link:hover {
-            border-color: var(--champagne);
-            color: var(--champagne);
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
+            border-color: var(--warm-ivory);
+            color: var(--warm-ivory);
         }
 
         .social-link svg {
