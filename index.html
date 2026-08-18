@@ -33,106 +33,24 @@
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        header {
-            background-color: var(--dark-bg);
-            border-bottom: 1px solid rgba(214, 190, 186, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.25rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            color: var(--warm-ivory);
-            letter-spacing: 0;
-            height: 50px;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #aaa;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--champagne);
-        }
-
-        .social-nav {
-            display: flex;
-            gap: 1.25rem;
-            list-style: none;
-        }
-
-        .social-nav a {
-            color: #999;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            border: 1px solid rgba(214, 190, 186, 0.2);
-        }
-
-        .social-nav a:hover {
-            color: var(--champagne);
-            border-color: rgba(214, 190, 186, 0.5);
-            background-color: rgba(214, 190, 186, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .social-nav svg {
-            width: 20px;
-            height: 20px;
-            stroke-width: 1.5;
-        }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            padding: 2rem;
             background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 100%);
         }
 
         .hero-content {
             text-align: center;
-            max-width: 700px;
+            max-width: 650px;
             animation: fadeInUp 0.8s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes fadeInUp {
@@ -147,10 +65,10 @@
         }
 
         .hero-lockup {
-            max-width: 650px;
-            width: 95%;
+            max-width: 500px;
+            width: 90%;
             height: auto;
-            margin: 0 auto 4rem;
+            margin: 0 auto 2.5rem;
             display: block;
             object-fit: contain;
             animation: logoFloat 3s ease-in-out infinite;
@@ -161,21 +79,21 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-10px);
             }
         }
 
         .social-links-container {
-            margin-top: 5rem;
+            margin-top: 2rem;
             animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         .social-links-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #666;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
 
@@ -243,27 +161,9 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .hero {
-                min-height: auto;
-                padding: 3rem 1.5rem;
-            }
-
             .hero-lockup {
-                max-width: 90%;
-                margin: 0 auto 3rem;
-            }
-
-            .social-links-container {
-                margin-top: 3rem;
-            }
-
-            .social-links-grid {
-                gap: 1rem;
+                max-width: 85%;
+                margin: 0 auto 2rem;
             }
 
             .social-link {
@@ -275,94 +175,19 @@
                 width: 20px;
                 height: 20px;
             }
-        }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background-color: #aaa;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
+            .social-links-label {
+                font-size: 0.7rem;
+                margin-bottom: 1.25rem;
             }
 
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: var(--dark-bg);
-                flex-direction: column;
-                gap: 0;
-                padding: 2rem;
-                border-bottom: 1px solid rgba(214, 190, 186, 0.1);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-            }
-
-            .nav-links a {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(214, 190, 186, 0.05);
-            }
-
-            .nav-links.active {
-                max-height: 500px;
+            .social-links-grid {
+                gap: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <img src="emblem-champagne.png" alt="Ambous Music">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#social">Connect</a></li>
-            </ul>
-            <ul class="social-nav">
-                <li><a href="https://instagram.com/ambousmusic" target="_blank" title="Instagram" aria-label="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
-                        <circle cx="12" cy="12" r="3.5"></circle>
-                        <circle cx="17.5" cy="6.5" r="0.75"></circle>
-                    </svg>
-                </a></li>
-                <li><a href="https://youtube.com/@ambousmusic" target="_blank" title="YouTube" aria-label="YouTube">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                    </svg>
-                </a></li>
-                <li><a href="https://tiktok.com/@ambousmusic" target="_blank" title="TikTok" aria-label="TikTok">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-                    </svg>
-                </a></li>
-                <li><a href="https://facebook.com/ambousmusic" target="_blank" title="Facebook" aria-label="Facebook">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 2h-3a6 6 0 0 0-6 6v4a2 2 0 0 0 2 2h2v7h4v-7h2a2 2 0 0 0 2-2v-4a6 6 0 0 0-6-6z"></path>
-                    </svg>
-                </a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
 
     <section class="hero" id="social">
         <div class="hero-content">
@@ -399,19 +224,5 @@
         </div>
     </section>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
 </body>
 </html>
