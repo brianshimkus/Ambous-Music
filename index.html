@@ -992,7 +992,7 @@
                 fetch(joinForm.action, { method: 'POST', body: new FormData(joinForm), mode: 'no-cors' })
                     .catch(function () {})
                     .then(function () {
-                        joinForm.outerHTML = '<p class="join-success">Thanks! Check your email to confirm your subscription.</p>';
+                        joinForm.outerHTML = '<p class="join-success">Thanks for subscribing! You\'re on the list.</p>';
                     });
             });
         }
