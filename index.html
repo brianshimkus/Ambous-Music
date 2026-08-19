@@ -11,18 +11,23 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ambousmusic.com/">
     <meta property="og:site_name" content="Ambous Music">
+    <meta property="og:locale" content="en_US">
     <meta property="og:title" content="Ambous Music | Guitar. Music. Fearless Ambition.">
     <meta property="og:description" content="Guitar-driven music built on fearless ambition. Follow @AmbousMusic on Instagram, YouTube, TikTok, and Facebook.">
     <meta property="og:image" content="https://ambousmusic.com/assets/images/avatar-primary.png">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="1000">
+    <meta property="og:image:alt" content="Ambous Music logo">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ambous Music | Guitar. Music. Fearless Ambition.">
     <meta name="twitter:description" content="Guitar-driven music built on fearless ambition. Follow @AmbousMusic on Instagram, YouTube, TikTok, and Facebook.">
     <meta name="twitter:image" content="https://ambousmusic.com/assets/images/avatar-primary.png">
+    <meta name="twitter:image:alt" content="Ambous Music logo">
 
     <link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
     <link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/favicons/ambous-favicon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="assets/favicons/ambous-favicon-192.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +47,17 @@
             "https://tiktok.com/@ambousmusic",
             "https://facebook.com/ambousmusic"
         ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Welcome to Ambous Music | A Community for Guitar & Music",
+        "description": "An introduction to Ambous Music — guitar-driven music built on fearless ambition.",
+        "thumbnailUrl": "https://img.youtube.com/vi/jBewBhLC7xs/maxresdefault.jpg",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/jBewBhLC7xs",
+        "url": "https://youtu.be/jBewBhLC7xs"
     }
     </script>
     <style>
@@ -207,6 +223,104 @@
             color: var(--champagne);
         }
 
+        /* Mobile menu */
+        .navbar-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: none;
+            padding: 0;
+            color: var(--warm-ivory);
+            cursor: pointer;
+        }
+
+        .navbar-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .navbar-toggle .icon-close {
+            display: none;
+        }
+
+        .navbar-toggle.active .icon-open {
+            display: none;
+        }
+
+        .navbar-toggle.active .icon-close {
+            display: block;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            background: rgba(7, 7, 6, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu-links a {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--warm-ivory);
+            text-decoration: none;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--champagne);
+        }
+
+        .mobile-menu-social {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .mobile-menu-social a {
+            font-family: var(--font-display);
+            color: var(--champagne);
+            opacity: 0.85;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-social a:hover {
+            opacity: 1;
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
@@ -251,10 +365,21 @@
             font-size: clamp(1.5rem, 3vw, 2.25rem);
             font-weight: 800;
             text-align: center;
-            color: var(--warm-ivory);
             letter-spacing: 0.3px;
             max-width: 700px;
             animation: heroFadeUp 0.8s ease-out both;
+        }
+
+        .hl-ivory {
+            color: var(--warm-ivory);
+        }
+
+        .hl-champagne {
+            color: var(--champagne);
+        }
+
+        .hl-gold {
+            color: var(--antique-gold);
         }
 
         .hero-subtext {
@@ -286,13 +411,6 @@
             box-shadow: 0 20px 60px rgba(7, 7, 6, 0.5);
             border: 1px solid rgba(214, 190, 138, 0.15);
             animation: heroFadeUp 0.8s ease-out 0.15s both;
-        }
-
-        .hero-rule {
-            width: 64px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
-            border-radius: 2px;
         }
 
         /* Shared section headings */
@@ -531,21 +649,15 @@
             }
 
             .navbar-social {
-                gap: 0.5rem;
-            }
-
-            .navbar-social a {
-                width: 32px;
-                height: 32px;
-            }
-
-            .navbar-social svg {
-                width: 16px;
-                height: 16px;
+                display: none;
             }
 
             .navbar-links {
                 display: none;
+            }
+
+            .navbar-toggle {
+                display: flex;
             }
 
             .hero {
@@ -606,9 +718,9 @@
                 <img src="assets/images/hero-lockup.svg" alt="Ambous Music">
             </a>
             <ul class="navbar-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" data-section="about">About</a></li>
+                <li><a href="#news" data-section="news">News</a></li>
+                <li><a href="#contact" data-section="contact">Contact</a></li>
             </ul>
             <ul class="navbar-social">
                 <li><a href="https://instagram.com/ambousmusic" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram" data-platform="instagram">
@@ -635,16 +747,41 @@
                     </svg>
                 </a></li>
             </ul>
+            <button class="navbar-toggle" id="navbarToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+                <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="4" y1="7" x2="20" y2="7"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="17" x2="20" y2="17"></line>
+                </svg>
+                <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                    <line x1="6" y1="18" x2="18" y2="6"></line>
+                </svg>
+            </button>
         </div>
     </nav>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#about" data-section="about">About</a></li>
+            <li><a href="#news" data-section="news">News</a></li>
+            <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+        <ul class="mobile-menu-social">
+            <li><a href="https://instagram.com/ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="instagram">Instagram</a></li>
+            <li><a href="https://youtube.com/@ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="youtube">YouTube</a></li>
+            <li><a href="https://tiktok.com/@ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="tiktok">TikTok</a></li>
+            <li><a href="https://facebook.com/ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="facebook">Facebook</a></li>
+        </ul>
+    </div>
+
     <section class="hero">
         <div class="hero-inner container">
-            <h1 class="hero-heading">Guitar. Music. Fearless Ambition.</h1>
-            <div class="hero-rule"></div>
+            <h1 class="hero-heading"><span class="hl-ivory">Guitar.</span> <span class="hl-champagne">Music.</span> <span class="hl-gold">Fearless Ambition.</span></h1>
             <div class="hero-video-wrap">
                 <iframe
-                    src="https://www.youtube-nocookie.com/embed/jBewBhLC7xs?rel=0&modestbranding=1"
+                    id="ytplayer"
+                    src="https://www.youtube-nocookie.com/embed/jBewBhLC7xs?rel=0&modestbranding=1&enablejsapi=1"
                     title="Ambous Music featured video"
                     frameborder="0"
                     allow="encrypted-media"
@@ -663,7 +800,7 @@
             </div>
             <div class="about-text reveal" style="--delay: 0.15s">
                 <p class="section-eyebrow">About</p>
-                <h2 class="section-heading">Where It Started</h2>
+                <h2 class="section-heading"><span class="hl-ivory">Where It</span> <span class="hl-gold">Started</span></h2>
                 <p>Ambous Music started with a simple idea: play guitar, chase the sound in your head, and never let fear get in the way of finishing the song. What began as late nights with a beat-up amp has grown into a project built on ambition, curiosity, and a refusal to sound like everyone else.</p>
                 <p>Every riff, take, and rough demo shared here comes from the same place — a love of the instrument and the belief that the best music happens when you stop overthinking and just play.</p>
             </div>
@@ -673,7 +810,7 @@
     <section class="updates" id="news">
         <div class="updates-inner container">
             <p class="section-eyebrow reveal">News</p>
-            <h2 class="section-heading reveal" style="--delay: 0.1s">Latest Updates</h2>
+            <h2 class="section-heading reveal" style="--delay: 0.1s"><span class="hl-ivory">Latest</span> <span class="hl-champagne">Updates</span></h2>
             <ul class="updates-list">
                 <li class="reveal" style="--delay: 0.2s">
                     <span class="update-date">2026</span>
@@ -688,7 +825,7 @@
             <p class="section-eyebrow">Contact</p>
             <h2 class="section-heading">Get In Touch</h2>
             <p class="contact-text">For bookings, press, or general inquiries:</p>
-            <a href="mailto:Brian@AmbousMusic.com" class="contact-email">Brian@AmbousMusic.com</a>
+            <a href="mailto:Brian@AmbousMusic.com" class="contact-email" id="contactEmailLink">Brian@AmbousMusic.com</a>
         </div>
     </section>
 
@@ -712,12 +849,46 @@
             });
         });
 
+        document.querySelectorAll('[data-section]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                va('event', { name: 'nav_click', data: { section: link.dataset.section } });
+            });
+        });
+
+        var contactEmailLink = document.getElementById('contactEmailLink');
+        if (contactEmailLink) {
+            contactEmailLink.addEventListener('click', function () {
+                va('event', { name: 'contact_click' });
+            });
+        }
+
         var navbar = document.getElementById('navbar');
         function onScroll() {
             navbar.classList.toggle('scrolled', window.scrollY > 8);
         }
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
+
+        var navToggle = document.getElementById('navbarToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        function closeMobileMenu() {
+            navToggle.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+        navToggle.addEventListener('click', function () {
+            var isOpen = mobileMenu.classList.toggle('open');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            if (isOpen) {
+                va('event', { name: 'mobile_menu_open' });
+            }
+        });
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMobileMenu);
+        });
 
         var revealObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -730,7 +901,22 @@
         document.querySelectorAll('.reveal').forEach(function (el) {
             revealObserver.observe(el);
         });
+
+        var videoPlayTracked = false;
+        window.onYouTubeIframeAPIReady = function () {
+            new YT.Player('ytplayer', {
+                events: {
+                    onStateChange: function (event) {
+                        if (event.data === YT.PlayerState.PLAYING && !videoPlayTracked) {
+                            videoPlayTracked = true;
+                            va('event', { name: 'video_play' });
+                        }
+                    }
+                }
+            });
+        };
     </script>
+    <script src="https://www.youtube.com/iframe_api" async></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
