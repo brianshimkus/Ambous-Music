@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambous Music | Guitar. Music. Fearless Ambition.</title>
     <meta name="description" content="Ambous Music — guitar-driven music built on fearless ambition. Follow @AmbousMusic on Instagram, YouTube, TikTok, and Facebook.">
-    <meta name="theme-color" content="#0f0f0f">
+    <meta name="theme-color" content="#070706">
     <link rel="canonical" href="https://ambousmusic.com/">
 
     <meta property="og:type" content="website">
@@ -13,16 +13,20 @@
     <meta property="og:site_name" content="Ambous Music">
     <meta property="og:title" content="Ambous Music | Guitar. Music. Fearless Ambition.">
     <meta property="og:description" content="Guitar-driven music built on fearless ambition. Follow @AmbousMusic on Instagram, YouTube, TikTok, and Facebook.">
-    <meta property="og:image" content="https://ambousmusic.com/avatar-primary.png">
+    <meta property="og:image" content="https://ambousmusic.com/assets/images/avatar-primary.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ambous Music | Guitar. Music. Fearless Ambition.">
     <meta name="twitter:description" content="Guitar-driven music built on fearless ambition. Follow @AmbousMusic on Instagram, YouTube, TikTok, and Facebook.">
-    <meta name="twitter:image" content="https://ambousmusic.com/avatar-primary.png">
+    <meta name="twitter:image" content="https://ambousmusic.com/assets/images/avatar-primary.png">
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="ambous-favicon-192.png">
+    <link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/favicons/ambous-favicon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -30,7 +34,7 @@
         "@type": "MusicGroup",
         "name": "Ambous Music",
         "url": "https://ambousmusic.com/",
-        "image": "https://ambousmusic.com/avatar-primary.png",
+        "image": "https://ambousmusic.com/assets/images/avatar-primary.png",
         "genre": "Guitar",
         "sameAs": [
             "https://instagram.com/ambousmusic",
@@ -49,10 +53,10 @@
 
         :root {
             --night-black: #070706;
-            --dark-bg: #0f0f0f;
-            --champagne: #D6BEBA;
+            --champagne: #D6BE8A;
             --antique-gold: #B99B5F;
             --warm-ivory: #F5F0E7;
+            --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         html {
@@ -62,34 +66,194 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--warm-ivory);
-            background-color: var(--dark-bg);
+            background-color: var(--night-black);
             overflow-x: hidden;
+            position: relative;
         }
 
+        /* Film-grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
+        /* Reveal-on-scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease var(--delay, 0s), transform 0.8s ease var(--delay, 0s);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shared page container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar.scrolled {
+            background: rgba(7, 7, 6, 0.65);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-bottom: 1px solid rgba(214, 190, 138, 0.12);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .navbar-social {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+        }
+
+        .navbar-social a {
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 100%);
+            border: 1.5px solid rgba(214, 190, 138, 0.4);
+            border-radius: 8px;
+            color: var(--champagne);
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .hero-content {
-            text-align: center;
-            max-width: 650px;
-            animation: fadeInUp 0.8s ease-out;
+        .navbar-social a:hover {
+            border-color: var(--warm-ivory);
+            color: var(--warm-ivory);
+        }
+
+        .navbar-social svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 1.5;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            font-family: var(--font-display);
+            color: var(--warm-ivory);
+            opacity: 0.75;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            opacity: 1;
+            color: var(--champagne);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background:
+                radial-gradient(ellipse 90% 60% at 50% 0%, rgba(185, 155, 95, 0.22) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 50% at 15% 100%, rgba(214, 190, 138, 0.16) 0%, transparent 65%),
+                radial-gradient(ellipse 70% 50% at 100% 100%, rgba(214, 190, 138, 0.12) 0%, transparent 65%),
+                var(--night-black);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                repeating-linear-gradient(135deg, rgba(214, 190, 138, 0.08) 0px, rgba(214, 190, 138, 0.08) 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(45deg, rgba(214, 190, 138, 0.08) 0px, rgba(214, 190, 138, 0.08) 1px, transparent 1px, transparent 40px);
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 0%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 0%, transparent 75%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 2rem;
+            width: 100%;
         }
 
-        @keyframes fadeInUp {
+        .hero-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 800;
+            text-align: center;
+            color: var(--warm-ivory);
+            letter-spacing: 0.3px;
+            max-width: 700px;
+            animation: heroFadeUp 0.8s ease-out both;
+        }
+
+        .hero-subtext {
+            font-size: 0.95rem;
+            color: var(--champagne);
+            text-align: center;
+            max-width: 500px;
+            letter-spacing: 0.3px;
+            animation: heroFadeUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes heroFadeUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(24px);
             }
             to {
                 opacity: 1;
@@ -97,157 +261,457 @@
             }
         }
 
-        .hero-lockup {
-            max-width: 650px;
-            width: 95%;
-            height: auto;
-            margin: 0 auto 3rem;
-            display: block;
-            object-fit: contain;
-            animation: logoFloat 3s ease-in-out infinite;
+        .hero-video-wrap {
+            width: 100%;
+            max-width: 1040px;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(7, 7, 6, 0.5);
+            border: 1px solid rgba(214, 190, 138, 0.15);
+            animation: heroFadeUp 0.8s ease-out 0.15s both;
         }
 
-        @keyframes logoFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        .hero-rule {
+            width: 64px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+            border-radius: 2px;
         }
 
-        .social-links-container {
-            margin-top: 2rem;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .social-links-label {
+        /* Shared section headings */
+        .section-eyebrow {
+            font-family: var(--font-display);
             font-size: 0.75rem;
-            color: #666;
+            color: var(--antique-gold);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
         }
 
-        .social-links-grid {
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--warm-ivory);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* About Section */
+        .about {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(214, 190, 138, 0.12);
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -15%;
+            right: -8%;
+            width: 560px;
+            height: 560px;
+            background: radial-gradient(circle, rgba(185, 155, 95, 0.14) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            border: 1px solid rgba(214, 190, 138, 0.2);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .about-photo img:hover {
+            transform: translateY(-4px);
+            border-color: rgba(214, 190, 138, 0.5);
+        }
+
+        .about-text p {
+            color: var(--warm-ivory);
+            opacity: 0.85;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* News Section */
+        .updates {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(214, 190, 138, 0.12);
+        }
+
+        .updates::before {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(214, 190, 138, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .updates-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .updates-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .updates-list li {
             display: flex;
             gap: 1.5rem;
-            justify-content: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(214, 190, 138, 0.1);
+        }
+
+        .updates-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .update-date {
+            flex-shrink: 0;
+            width: 70px;
+            color: var(--champagne);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .updates-list p {
+            color: var(--warm-ivory);
+            opacity: 0.85;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--champagne);
+            text-align: center;
+        }
+
+        .contact .section-eyebrow {
+            color: var(--night-black);
+            opacity: 0.55;
+        }
+
+        .contact .section-heading {
+            color: var(--night-black);
+        }
+
+        .contact-text {
+            color: var(--night-black);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            font-family: var(--font-display);
+            color: var(--night-black);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid rgba(7, 7, 6, 0.3);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--antique-gold);
+            border-color: var(--antique-gold);
+        }
+
+        .hero-video-wrap iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--champagne);
+            padding: 2.5rem 2rem;
+            border-top: 1px solid rgba(7, 7, 6, 0.15);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            color: var(--night-black);
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            opacity: 0.85;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
             flex-wrap: wrap;
         }
 
-        .social-link {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1.5px solid var(--champagne);
-            border-radius: 12px;
+        .footer-links a {
+            color: var(--night-black);
             text-decoration: none;
-            color: var(--champagne);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: socialPulse 0.6s ease-out var(--delay, 0s);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            opacity: 0.75;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes socialPulse {
-            from {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .social-link:hover {
-            border-color: var(--warm-ivory);
-            color: var(--warm-ivory);
-        }
-
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 1.5;
-            position: relative;
-            z-index: 1;
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero-lockup {
-                max-width: 85%;
-                margin: 0 auto 2rem;
+            .navbar {
+                padding: 1rem 1.25rem;
             }
 
-            .social-link {
-                width: 50px;
-                height: 50px;
+            .navbar-logo img {
+                height: 32px;
             }
 
-            .social-link svg {
-                width: 20px;
-                height: 20px;
+            .navbar-social {
+                gap: 0.5rem;
             }
 
-            .social-links-label {
-                font-size: 0.7rem;
-                margin-bottom: 1.25rem;
+            .navbar-social a {
+                width: 32px;
+                height: 32px;
             }
 
-            .social-links-grid {
-                gap: 0.75rem;
+            .navbar-social svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6.5rem 1.5rem 3rem;
+            }
+
+            .hero-inner {
+                gap: 1.5rem;
+            }
+
+            .about,
+            .updates,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-photo img {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .update-date {
+                width: 55px;
+            }
+
+            .contact-email {
+                font-size: 1.25rem;
+                word-break: break-word;
+            }
+
+            .site-footer {
+                padding: 2rem 1.25rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+                gap: 1.25rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero" id="social">
-        <div class="hero-content">
-            <img src="hero-lockup.svg" alt="Ambous Music" class="hero-lockup">
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner container">
+            <a href="#" class="navbar-logo">
+                <img src="assets/images/hero-lockup.svg" alt="Ambous Music">
+            </a>
+            <ul class="navbar-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="navbar-social">
+                <li><a href="https://instagram.com/ambousmusic" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram" data-platform="instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
+                        <circle cx="12" cy="12" r="3.5"></circle>
+                        <circle cx="17.5" cy="6.5" r="0.75"></circle>
+                    </svg>
+                </a></li>
+                <li><a href="https://youtube.com/@ambousmusic" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube" data-platform="youtube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                    </svg>
+                </a></li>
+                <li><a href="https://tiktok.com/@ambousmusic" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok" data-platform="tiktok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                    </svg>
+                </a></li>
+                <li><a href="https://facebook.com/ambousmusic" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook" data-platform="facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="social-links-container">
-                <p class="social-links-label">Connect on social</p>
-                <div class="social-links-grid">
-                    <a href="https://instagram.com/ambousmusic" target="_blank" rel="noopener noreferrer" class="social-link" style="--delay: 0s" title="Instagram" aria-label="Instagram" data-platform="instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
-                            <circle cx="12" cy="12" r="3.5"></circle>
-                            <circle cx="17.5" cy="6.5" r="0.75"></circle>
-                        </svg>
-                    </a>
-                    <a href="https://youtube.com/@ambousmusic" target="_blank" class="social-link" style="--delay: 0.1s" title="YouTube" data-platform="youtube">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
-                        </svg>
-                    </a>
-                    <a href="https://tiktok.com/@ambousmusic" target="_blank" class="social-link" style="--delay: 0.2s" title="TikTok" data-platform="tiktok">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-                        </svg>
-                    </a>
-                    <a href="https://facebook.com/ambousmusic" target="_blank" class="social-link" style="--delay: 0.3s" title="Facebook" data-platform="facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                </div>
+    <section class="hero">
+        <div class="hero-inner container">
+            <h1 class="hero-heading">Guitar. Music. Fearless Ambition.</h1>
+            <div class="hero-rule"></div>
+            <div class="hero-video-wrap">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/jBewBhLC7xs?rel=0&modestbranding=1"
+                    title="Ambous Music"
+                    frameborder="0"
+                    allow="encrypted-media"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="hero-subtext">Follow along as the Ambous Music story unfolds.</p>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-inner container">
+            <div class="about-photo reveal">
+                <img src="assets/images/about-photo-bw.jpg" alt="A young guitarist getting started, holding a toy guitar">
+            </div>
+            <div class="about-text reveal" style="--delay: 0.15s">
+                <p class="section-eyebrow">About</p>
+                <h2 class="section-heading">Where It Started</h2>
+                <p>Ambous Music started with a simple idea: play guitar, chase the sound in your head, and never let fear get in the way of finishing the song. What began as late nights with a beat-up amp has grown into a project built on ambition, curiosity, and a refusal to sound like everyone else.</p>
+                <p>Every riff, take, and rough demo shared here comes from the same place — a love of the instrument and the belief that the best music happens when you stop overthinking and just play.</p>
             </div>
         </div>
     </section>
 
+    <section class="updates" id="news">
+        <div class="updates-inner container">
+            <p class="section-eyebrow reveal">News</p>
+            <h2 class="section-heading reveal" style="--delay: 0.1s">Latest Updates</h2>
+            <ul class="updates-list">
+                <li class="reveal" style="--delay: 0.2s">
+                    <span class="update-date">2026</span>
+                    <p>Ambous Music officially launches — new music and behind-the-scenes content coming soon.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container reveal">
+            <p class="section-eyebrow">Contact</p>
+            <h2 class="section-heading">Get In Touch</h2>
+            <p class="contact-text">For bookings, press, or general inquiries:</p>
+            <a href="mailto:Brian@AmbousMusic.com" class="contact-email">Brian@AmbousMusic.com</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner container">
+            <p class="footer-copy">&copy; 2026 Ambous Music. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="https://instagram.com/ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="instagram">Instagram</a></li>
+                <li><a href="https://youtube.com/@ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="youtube">YouTube</a></li>
+                <li><a href="https://tiktok.com/@ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="tiktok">TikTok</a></li>
+                <li><a href="https://facebook.com/ambousmusic" target="_blank" rel="noopener noreferrer" data-platform="facebook">Facebook</a></li>
+            </ul>
+        </div>
+    </footer>
+
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-        document.querySelectorAll('.social-link').forEach(function (link) {
+        document.querySelectorAll('[data-platform]').forEach(function (link) {
             link.addEventListener('click', function () {
                 va('event', { name: 'social_click', data: { platform: link.dataset.platform } });
             });
+        });
+
+        var navbar = document.getElementById('navbar');
+        function onScroll() {
+            navbar.classList.toggle('scrolled', window.scrollY > 8);
+        }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            revealObserver.observe(el);
         });
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
