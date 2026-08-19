@@ -548,6 +548,103 @@
             margin: 0;
         }
 
+        /* Join Section */
+        .join {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(214, 190, 138, 0.12);
+            text-align: center;
+        }
+
+        .join::before {
+            content: '';
+            position: absolute;
+            top: -25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(214, 190, 138, 0.16) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .join-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .join-text {
+            color: var(--warm-ivory);
+            opacity: 0.85;
+            margin: 0 auto 2rem;
+            max-width: 460px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .join-form {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .join-form input[type="email"] {
+            flex: 1;
+            min-width: 240px;
+            padding: 0.875rem 1.25rem;
+            background: rgba(245, 240, 231, 0.04);
+            border: 1.5px solid rgba(214, 190, 138, 0.3);
+            border-radius: 8px;
+            color: var(--warm-ivory);
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .join-form input[type="email"]::placeholder {
+            color: rgba(245, 240, 231, 0.4);
+        }
+
+        .join-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--champagne);
+        }
+
+        .join-form button {
+            padding: 0.875rem 1.75rem;
+            background: var(--champagne);
+            color: var(--night-black);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .join-form button:hover {
+            background: var(--warm-ivory);
+        }
+
+        .join-disclaimer {
+            margin-top: 1rem;
+            color: var(--warm-ivory);
+            opacity: 0.5;
+            font-size: 0.75rem;
+        }
+
+        .join-success {
+            color: var(--champagne);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
         /* Contact Section */
         .contact {
             padding: 6rem 2rem;
@@ -670,8 +767,18 @@
 
             .about,
             .updates,
+            .join,
             .contact {
                 padding: 4rem 1.5rem;
+            }
+
+            .join-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .join-form input[type="email"] {
+                min-width: 0;
             }
 
             .about-inner {
@@ -720,6 +827,7 @@
             <ul class="navbar-links">
                 <li><a href="#about" data-section="about">About</a></li>
                 <li><a href="#news" data-section="news">News</a></li>
+                <li><a href="#join" data-section="join">Join</a></li>
                 <li><a href="#contact" data-section="contact">Contact</a></li>
             </ul>
             <ul class="navbar-social">
@@ -765,6 +873,7 @@
         <ul class="mobile-menu-links">
             <li><a href="#about" data-section="about">About</a></li>
             <li><a href="#news" data-section="news">News</a></li>
+            <li><a href="#join" data-section="join">Join</a></li>
             <li><a href="#contact" data-section="contact">Contact</a></li>
         </ul>
         <ul class="mobile-menu-social">
@@ -820,6 +929,19 @@
         </div>
     </section>
 
+    <section class="join" id="join">
+        <div class="join-inner reveal">
+            <p class="section-eyebrow">Join the List</p>
+            <h2 class="section-heading"><span class="hl-ivory">Stay in the</span> <span class="hl-champagne">Loop</span></h2>
+            <p class="join-text">Be the first to hear new music, updates, and behind-the-scenes content from Ambous Music.</p>
+            <form action="https://app.kit.com/forms/9821972/subscriptions" method="post" class="join-form" id="joinForm">
+                <input type="email" name="email_address" placeholder="Your email address" required aria-label="Email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="join-disclaimer">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="container reveal">
             <p class="section-eyebrow">Contact</p>
@@ -859,6 +981,19 @@
         if (contactEmailLink) {
             contactEmailLink.addEventListener('click', function () {
                 va('event', { name: 'contact_click' });
+            });
+        }
+
+        var joinForm = document.getElementById('joinForm');
+        if (joinForm) {
+            joinForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                va('event', { name: 'newsletter_signup' });
+                fetch(joinForm.action, { method: 'POST', body: new FormData(joinForm), mode: 'no-cors' })
+                    .catch(function () {})
+                    .then(function () {
+                        joinForm.outerHTML = '<p class="join-success">Thanks! Check your email to confirm your subscription.</p>';
+                    });
             });
         }
 
